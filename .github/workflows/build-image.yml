@@ -31,7 +31,7 @@ jobs:
       - name: Login to DockerHub
         run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
-      - name: Build and push tag
+      - name: Build python3.8-nodejs14-aws2.2.30
         run: |
           docker buildx build \
             --platform linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6 \
@@ -40,6 +40,8 @@ jobs:
             . \
             --push
 
+      - name: Build python3.9-nodejs14-aws2.2.30
+        run: |
           docker buildx build \
             --platform linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6 \
             --build-arg SRC_TAG=python3.9-nodejs14 \
@@ -47,6 +49,8 @@ jobs:
             . \
             --push
 
+      - name: Build python3.8-nodejs16-aws2.2.30
+        run: |
           docker buildx build \
             --platform linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6 \
             --build-arg SRC_TAG=python3.8-nodejs16 \
@@ -54,6 +58,8 @@ jobs:
             . \
             --push
 
+      - name: Build python3.9-nodejs16-aws2.2.30
+        run: |
           docker buildx build \
             --platform linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6 \
             --build-arg SRC_TAG=python3.9-nodejs16 \
