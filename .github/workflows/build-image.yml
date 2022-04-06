@@ -46,3 +46,17 @@ jobs:
             -t a00s/${{ steps.variables.outputs.REPOSITORY_NAME }}:python3.9-nodejs14-aws2.2.30 \
             . \
             --push
+
+          docker buildx build \
+            --platform linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6 \
+            --build-arg SRC_TAG=python3.8-nodejs16 \
+            -t a00s/${{ steps.variables.outputs.REPOSITORY_NAME }}:python3.8-nodejs16-aws2.2.30 \
+            . \
+            --push
+
+          docker buildx build \
+            --platform linux/amd64,linux/arm64,linux/arm/v7,linux/arm/v6 \
+            --build-arg SRC_TAG=python3.9-nodejs16 \
+            -t a00s/${{ steps.variables.outputs.REPOSITORY_NAME }}:python3.9-nodejs16-aws2.2.30 \
+            . \
+            --push
